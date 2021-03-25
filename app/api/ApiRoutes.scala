@@ -10,5 +10,6 @@ import play.api.routing.sird._
 class ApiRoutes @Inject()(projectController: ProjectController) extends SimpleRouter {
   override def routes: Routes = {
     case GET(p"/") => projectController.getProject
+    //case GET(p"/$id") => projectController.findProjectId(id)
   }
 }
