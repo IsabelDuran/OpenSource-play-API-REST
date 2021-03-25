@@ -8,15 +8,24 @@ import repositories.ProjectRepository
 
 import scala.concurrent._
 
-/**
- * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
- */
 
 class ProjectController @Inject()(val controllerComponents: ControllerComponents, projectRepository: ProjectRepository)(
   implicit ec: ExecutionContext) extends BaseController {
-
-  def getProject: Action[AnyContent] = Action.async { implicit request =>
-    projectRepository.getAll.map(a => Ok(Json.toJson(a)))
+  def getProjects: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok("TODO"))
   }
+
+  def getProjectById(id: String): Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok("TODO"))
+  }
+
+  def findProjectByName(name: String): Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok("TODO"))
+  }
+
+  def addProject: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok("TODO"))
+  }
+
+
 }
