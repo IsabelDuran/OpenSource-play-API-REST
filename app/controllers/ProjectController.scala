@@ -12,7 +12,7 @@ import scala.concurrent._
 class ProjectController @Inject()(val controllerComponents: ControllerComponents, projectRepository: ProjectRepository)(
   implicit ec: ExecutionContext) extends BaseController {
   def getProjects: Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok("TODO"))
+    projectRepository.getAll.map(project => Ok(Json.toJson(project)))
   }
 
   def getProjectById(id: String): Action[AnyContent] = Action.async { implicit request =>

@@ -8,6 +8,7 @@ import scala.concurrent.{ExecutionContext, Future}
 
 class ReleaseController @Inject()(val controllerComponents: ControllerComponents, projectRepository: ProjectRepository)(
   implicit ec: ExecutionContext) extends BaseController {
+
   def getAllProjectReleases: Action[AnyContent] = Action.async { implicit request =>
     Future.successful(Ok("TODO"))
   }
