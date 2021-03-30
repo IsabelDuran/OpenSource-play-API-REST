@@ -13,7 +13,7 @@ class ApiRoutes @Inject()(projectController: ProjectController, releaseControlle
       projectController.getProjects
 
     case GET(p"/$id")   =>
-      projectController.getProjectById(id)
+      projectController.getProjectById(id.toInt)
 
     case GET(p"/$name") =>
       projectController.findProjectByName(name)
