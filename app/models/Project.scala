@@ -2,7 +2,7 @@ package models
 
 import play.api.libs.json.{Format, Json}
 
-case class Project(id: Int, name: String)
+case class Project(id: Option[Int] = None, name: String)
 
 object Project {
   implicit val format: Format[Project] = Json.format

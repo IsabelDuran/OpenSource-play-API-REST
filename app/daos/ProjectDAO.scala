@@ -1,8 +1,7 @@
 package daos
 
 import models.Project
-import play.api.db.slick.DatabaseConfigProvider
-import play.api.db.slick.HasDatabaseConfigProvider
+import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import play.db.NamedDatabase
 import slick.jdbc.JdbcProfile
 
@@ -33,10 +32,10 @@ class ProjectDAO @Inject()(@NamedDatabase("mydb") protected val dbConfigProvider
 
   private class ProjectTable(tag: Tag) extends Table[Project](tag, "PROJECT") {
 
-    def id: Rep[Int] = column[Int]("id", O.PrimaryKey)
+    def id: Rep[Int] = column[Int]("id", O.PrimaryKey, O.AutoInc)
 
     def name: Rep[String] = column[String]("name")
 
-    def * = (id, name) <> (Project.tupled, Project.unapply)
+    def * = (id.?, name) <> (Project.tupled, Project.unapply)
   }
 }

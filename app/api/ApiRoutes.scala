@@ -15,7 +15,7 @@ class ApiRoutes @Inject()(projectController: ProjectController, releaseControlle
     case GET(p"/$id")   =>
       projectController.getProjectById(id.toInt)
 
-    case GET(p"/$name") =>
+    case GET(p"/find" ? q_?"name=$name") =>
       projectController.findProjectByName(name)
 
     case POST(p"/")      =>

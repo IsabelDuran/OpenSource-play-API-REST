@@ -1,12 +1,11 @@
 package controllers
 
-import play.api.libs.json.Json
-
-import javax.inject.Inject
-import play.api.mvc._
 import daos.ProjectDAO
 import models.Project
+import play.api.libs.json.Json
+import play.api.mvc._
 
+import javax.inject.Inject
 import scala.concurrent._
 
 
@@ -20,16 +19,16 @@ class ProjectController @Inject()(val controllerComponents: ControllerComponents
     projectDAO.get(id).map(project => Ok(Json.toJson(project)))
   }
 
-  def findProjectByName(name: String): Action[AnyContent] = Action.async { implicit request =>
-    Future.successful(Ok("TODO"))
+  def findProjectByName(name: Option[String]): Action[AnyContent] = Action.async { implicit request =>
+    projectDAO.find(name.getOrElse("")).map(project => Ok(Json.toJson(project)))
   }
 
   def addProject = Action.async { implicit request =>
     /*
     AnyContentAsJson({"name":"Hello"})
      */
-    println(request.body)
-    projectDAO.add(Project(1, "hi")).map(_ => Ok(Json.toJson("New project created")))
+    println(request.body.asJson)
+    projectDAO.add(Project(name = "medaigualmeencanta")).map(_ => Ok(Json.toJson("New project created")))
   }
 
 
