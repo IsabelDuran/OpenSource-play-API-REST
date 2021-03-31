@@ -6,44 +6,57 @@
 <div id="content" class="wrapper doc">
 <article>
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Open Source API</a>
+      <a class="navbar-brand" href="/">Open source API</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Create new project</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-          <li><a href="/projects">Projects</a></li>
-          <li><a href="#">Create new project</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+    </div>
   </nav>
 
-  <div>
+  <br>
+
+  <div class="container">
     <h2 class="text-center">API REST for Open Source projects</h2>
-    <h4 class="text-center">The following endpoints were created to obtain and create open source projects and it's releases</h4>
+    <h5 class="text-center">The following endpoints are available to obtain and create open source projects and its releases</h5>
+    <br>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">  <h5 class="mb-1"><b>GET</b> </h5> /projects</li>
+      <br>
+      <li class="list-group-item list-group-item-info"> <h5 class="mb-1"><b>GET</b> </h5> /projects/$id</li>
+      <br>
+      <li class="list-group-item list-group-item-info"> <h5 class="mb-1"><b>GET</b> </h5> /projects/find?name=$name</li>
+      <br>
+      <li class="list-group-item list-group-item-warning"> <h5 class="mb-1"><b>POST</b> </h5> /projects</li>
+      <br>
+      <li class="list-group-item list-group-item-info"> <h5 class="mb-1"><b>GET</b> </h5> /projects/$projectId/releases</li>
+      <br>
+      <li class="list-group-item list-group-item-info"> <h5 class="mb-1"><b>GET</b> </h5> /projects/releases/$id</li>
+      <br>
+      <li class="list-group-item list-group-item-warning"> <h5 class="mb-1"><b>POST</b> </h5> /project/releases</li>
+      <br>
+    </ul>
+
   </div>
 
- 
 </article>
 
 </div>
