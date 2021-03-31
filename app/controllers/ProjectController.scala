@@ -13,20 +13,25 @@ import scala.concurrent._
 class ProjectController @Inject()(val controllerComponents: ControllerComponents, projectDAO: ProjectDAO)(
   implicit ec: ExecutionContext) extends BaseController {
   def getProjects: Action[AnyContent] = Action.async { implicit request =>
-    projectDAO.getAll.map(project => Ok(Json.toJson(project)))
+    projectDAO.getAll
+      .map(projects => Ok(Json.toJson(projects)))
   }
 
   def getProjectById(id: Int): Action[AnyContent] = Action.async { implicit request =>
-    projectDAO.get(id).map(project => Ok(Json.toJson(project)))
+    projectDAO.get(id)
+      .map(project => Ok(Json.toJson(project)))
   }
 
   def findProjectByName(name: Option[String]): Action[AnyContent] = Action.async { implicit request =>
-    projectDAO.find(name.getOrElse("")).map(project => Ok(Json.toJson(project)))
+    projectDAO.find(name.getOrElse(""))
+      .map(project => Ok(Json.toJson(project)))
   }
 
   def addProject = Action.async { implicit request =>
     val bodyParam = (request.body.asJson.get \ "name").as[String]
-    projectDAO.add(Project(name = bodyParam)).map(_ => Ok(Json.toJson("New project created")))
+    projectDAO
+      .add(Project(name = bodyParam))
+      .map(_ => Ok(Json.toJson("New project created")))
   }
 
 

@@ -23,14 +23,14 @@ class ApiRoutes @Inject()(projectController: ProjectController, releaseControlle
     case POST(p"/")      =>
       projectController.addProject
 
-    case GET(p"/$id/releases") =>
-      releaseController.getAllProjectReleases
+    case GET(p"/$projectId/releases") =>
+      releaseController.getAllProjectReleases(projectId.toInt)
 
-    case GET(p"/releases/$version") =>
-      releaseController.getRelease(version)
+    case GET(p"/releases/$id") =>
+      releaseController.getRelease(id.toInt)
 
-    case POST(p"/releases") =>
-      releaseController.addRelease
+    case POST(p"/$projectId/releases") =>
+      releaseController.addRelease(projectId.toInt)
 
 
 
