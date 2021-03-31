@@ -1,2 +1,3 @@
-->          /projects           api.ApiRoutes
+GET         /                        controllers.AppController.index
+->          /projects                api.ApiRoutes
 

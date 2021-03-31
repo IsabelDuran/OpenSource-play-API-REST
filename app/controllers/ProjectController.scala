@@ -2,7 +2,8 @@ package controllers
 
 import daos.ProjectDAO
 import models.Project
-import play.api.libs.json.Json
+
+import play.api.libs.json.{JsValue, Json}
 import play.api.mvc._
 
 import javax.inject.Inject
@@ -24,11 +25,8 @@ class ProjectController @Inject()(val controllerComponents: ControllerComponents
   }
 
   def addProject = Action.async { implicit request =>
-    /*
-    AnyContentAsJson({"name":"Hello"})
-     */
-    println(request.body.asJson)
-    projectDAO.add(Project(name = "medaigualmeencanta")).map(_ => Ok(Json.toJson("New project created")))
+    val bodyParam = (request.body.asJson.get \ "name").as[String]
+    projectDAO.add(Project(name = bodyParam)).map(_ => Ok(Json.toJson("New project created")))
   }
 
 
