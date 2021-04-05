@@ -32,7 +32,5 @@ class ApiRoutes @Inject()(projectController: ProjectController, releaseControlle
     case POST(p"/$projectId/releases") =>
       releaseController.addRelease(projectId.toInt)
 
-
-
   }
 }

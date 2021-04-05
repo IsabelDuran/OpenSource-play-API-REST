@@ -20,14 +20,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/projects">Projects</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Create new project</a>
-          </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>
@@ -36,7 +29,7 @@
 
   <div class="container">
     <h2 class="text-center">API REST for Open Source projects</h2>
-    <h5 class="text-center">The following endpoints are available to obtain and create open source projects and its releases</h5>
+    <h5 class="text-center">You can use the following endpoints to obtain and create open source projects and its releases</h5>
     <br>
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">  <h5 class="mb-1"><b>GET</b> </h5> /projects</li>
@@ -45,13 +38,16 @@
       <br>
       <li class="list-group-item list-group-item-info"> <h5 class="mb-1"><b>GET</b> </h5> /projects/find?name=$name</li>
       <br>
-      <li class="list-group-item list-group-item-warning"> <h5 class="mb-1"><b>POST</b> </h5> /projects</li>
+      <li class="list-group-item list-group-item-warning"> <h5 class="mb-1"><b>POST</b> </h5> /projects <small class="text-muted">Body = { "name" : "examplename" }</small></li>
       <br>
       <li class="list-group-item list-group-item-info"> <h5 class="mb-1"><b>GET</b> </h5> /projects/$projectId/releases</li>
       <br>
       <li class="list-group-item list-group-item-info"> <h5 class="mb-1"><b>GET</b> </h5> /projects/releases/$id</li>
       <br>
-      <li class="list-group-item list-group-item-warning"> <h5 class="mb-1"><b>POST</b> </h5> /project/releases</li>
+      <li class="list-group-item list-group-item-warning"> <h5 class="mb-1"><b>POST</b> </h5> /project/releases <small class="text-muted">Body =     {
+        "version": "0.0.2",
+        "link": "http://myrepo.org/version=isa002"
+        }</small></li>
       <br>
     </ul>
 

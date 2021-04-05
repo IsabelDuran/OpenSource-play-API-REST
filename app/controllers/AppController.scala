@@ -10,6 +10,6 @@ class AppController @Inject()(val controllerComponents: ControllerComponents)
                               extends BaseController {
 
   def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+    Ok(views.html.index("home page"))
   }
 }
