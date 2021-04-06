@@ -16,11 +16,11 @@ class ReleaseDAO @Inject()(@NamedDatabase("mydb") protected val dbConfigProvider
 
   private val releases = TableQuery[ReleaseTable]
 
-  def getAll(projectId: Int): Future[Seq[Release]] =
-    db.run(releases.filter(_.projectId === projectId).result)
+  def getAll(projectId: Int): Future[List[Release]] =
+    db.run(releases.filter(_.projectId === projectId).result).map(_.toList)
 
-  def get(id: Int): Future[Seq[Release]] =
-    db.run(releases.filter(_.id === id).result)
+  def get(id: Int): Future[List[Release]] =
+    db.run(releases.filter(_.id === id).result).map(_.toList)
 
   def add(release: Release): Future[Unit] =
     db.run(releases += release).map(_ => ())
@@ -37,7 +37,5 @@ class ReleaseDAO @Inject()(@NamedDatabase("mydb") protected val dbConfigProvider
     def projectId: Rep[Int] = column[Int]("project_id")
 
     def * = (id.?, version, link, projectId) <> (Release.tupled, Release.unapply)
-
-    //def project = foreignKey("project_id", projectId, TableQuery[Project])
   }
 }

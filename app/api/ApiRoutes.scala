@@ -3,7 +3,6 @@ package api
 import controllers.{ProjectController, ReleaseController}
 
 import javax.inject.Inject
-import play.api.mvc._
 import play.api.routing.Router.Routes
 import play.api.routing._
 import play.api.routing.sird._
@@ -31,6 +30,5 @@ class ApiRoutes @Inject()(projectController: ProjectController, releaseControlle
 
     case POST(p"/$projectId/releases") =>
       releaseController.addRelease(projectId.toInt)
-
   }
 }

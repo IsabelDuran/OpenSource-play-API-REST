@@ -16,16 +16,16 @@ class ProjectDAO @Inject()(@NamedDatabase("mydb") protected val dbConfigProvider
 
   private val projects = TableQuery[ProjectTable]
 
-  def getAll: Future[Seq[Project]] =
-    db.run(projects.result)
+  def getAll: Future[List[Project]] =
+    db.run(projects.result).map(_.toList)
 
 
-  def get(id: Int): Future[Seq[Project]] =
-    db.run(projects.filter(_.id === id).result)
+  def get(id: Int): Future[List[Project]] =
+    db.run(projects.filter(_.id === id).result).map(_.toList)
 
 
-  def find(name: String): Future[Seq[Project]] =
-    db.run(projects.filter(_.name === name).result)
+  def find(name: String): Future[List[Project]] =
+    db.run(projects.filter(_.name === name).result).map(_.toList)
 
   def add(project: Project): Future[Unit] =
     db.run(projects += project).map(_ => ())
